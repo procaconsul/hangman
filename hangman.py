@@ -15,7 +15,6 @@ class Hangman(object):
 
 
   def run(self):
-    
     word = self.next_word()
     so_far = ['_' for i in range(len(word))]
     misses = []
@@ -79,8 +78,4 @@ if __name__ == '__main__':
           break
       except EOFError:
         exit()
-
-
-
-
     

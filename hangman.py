@@ -21,7 +21,7 @@ class Hangman(object):
 
   def game_over(self):
     return len(self.misses) == 6 or \
-        all([l in self.guessed for l in self.word]) 
+        all(l in self.guessed for l in self.word) 
 
   def next_word(self):
     self.next += 1
@@ -40,7 +40,7 @@ def end_game_msg(misses, word):
 
 def print_status(misses, guessed, word):
   print('------------------------------')
-  print('Word: ' + ' '.join([c if c in guessed else '_' for c in word])) 
+  print('Word: ' + ' '.join(c if c in guessed else '_' for c in word)) 
   print('Misses: ' + str(misses))
 
 def get_guess():

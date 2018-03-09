@@ -46,12 +46,17 @@ def print_status(misses, guessed, word):
     print('Misses: ' + str(misses))
 
 
-def get_guess():
-    guess = input('Guess: ')
-    while not guess.isalpha():
-        print('You can only play with letters, you dumbass!')
+def get_guess(tried):
+    while True:
         guess = input('Guess: ')
-    return guess
+        if not guess.isalpha():
+            print('You can only play with letters, you dumbass!')
+        elif len(guess) != 1:
+            print('In my experience, a letter is one character...')
+        elif guess in tried:
+            print('You\'re asleep bruv?! You\'ve already tried that one!')
+        else:
+            return guess
 
 
 @atexit.register
@@ -75,7 +80,7 @@ if __name__ == '__main__':
             game.next_word()
             while not game.game_over():
                 print_status(game.misses, game.guessed, game.word)
-                guess = get_guess()
+                guess = get_guess(game.misses + game.guessed)
                 game.play(guess)
             end_game_msg(game.misses, game.word)
 

@@ -1,7 +1,9 @@
 import argparse
 import random
 import atexit
+import sys
 
+assert sys.version_info >= (3, 0), "Please run with python 3"
 
 class Hangman(object):
 
